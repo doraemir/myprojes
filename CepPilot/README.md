@@ -1,42 +1,65 @@
-# CepPilot Mobile — MVP v0.2
+# 💰 CepPilot
+### Cebindeki bütçe yardımcısı
 
-**A real React Native application for Android and iOS, not a website.** Built using Expo SDK 54 + TypeScript.
+Gelir ve giderlerini kaydetmek, harcamalarını görmek ve bir sonraki maaş gününe kadar günlük bütçeni takip etmek için geliştirilen mobil uygulama.
 
-## Requirements
-- Windows/macOS/Linux, Node.js LTS and npm
-- Expo Go mobile app (or Android emulator / iOS test build)
+**Teknolojiler:** React Native · Expo SDK 54 · TypeScript · AsyncStorage  
+**Durum:** Mobil MVP kaynakları yüklü; fiziksel cihaz testi bekliyor.
 
-## Start in PowerShell
+## Kaynakta bulunan özellikler
+
+- Ana sayfa, işlem geçmişi, analizler ve ayarlar olmak üzere dört sekme.
+- Gelir ve gider kaydı; yedi harcama kategorisi.
+- İşleme uzun basarak onaylı silme.
+- Son yedi günün harcama grafiği ve kategori dağılımı.
+- Bakiye, planlanan faturalar ve ayrılan birikime göre günlük harcama tahmini.
+- Başlangıç bakiyesi, maaş günü ve para birimi ayarları.
+- Cihaz üzerinde çevrimdışı kayıt; tutarlarda tam sayı kuruş hesabı.
+
+## Kurulum
+
+Node.js ve npm gereklidir. Depoyu indirdikten sonra terminali **package.json dosyasının bulunduğu CepPilot klasöründe** aç:
+
 ```powershell
 cd myprojes/CepPilot
 npm install
 npx expo install --fix
 npx expo start
 ```
-Scan the Expo QR code in Expo Go while connected to the same network. If local connectivity fails try `npx expo start --tunnel` (may require extra dependencies).
 
-## Includes
-- Mobile four-tab navigation: Home, Activity, Insights, Settings
-- Add expenses/income with seven expense categories
-- Transactions history, hold to confirm deletion
-- 7-day bar chart and spending category progress bars (native Views, no external chart service)
-- Safe-to-spend estimate from remaining funds / days until next payday
-- Editable starting balance, unpaid bills, reserve, payday, currency
-- AsyncStorage offline persistence, minor-unit integer cents arithmetic
-- No permissions required, no server, no bank login
+Terminal zaten CepPilot klasöründeyse ilk komutu atla. Uyumlu Expo Go uygulaması veya emülatör/test derlemesiyle aç. Yerel ağ bağlantısı kurulamazsa `npx expo start --tunnel` denenebilir; ek bağımlılık gerektirebilir.
 
-## IMPORTANT before publishing
-- **Not tested on physical Android/iOS device yet**; perform device QA.
-- AsyncStorage is **not encrypted**; do not store detailed personal financial information until secure storage approach is implemented.
-- Multi-currency not supported: changing currency changes **display only**, not converted amounts. Use one currency per accounting ledger.
-- Balance is starting balance plus entries. If starting balance already contains recorded entries, you will double count. Use balance at app adoption and log only *new* movements.
-- Bills and reserves are manual, and planned bills must not already have been subtracted from the current balance.
-- Input precision is two decimal places; yen and other zero- or three-decimal currencies are not implemented.
-- Estimate doesn't include irregular future income, interest, liabilities not entered by the user or overdraft. Not financial advice.
-- No bank sync, cloud sync, encrypted storage, sign-in, subscriptions, push notifications or translations yet.
-- Date aggregation uses UTC month keys currently. Before global release, update monthly grouping to the device's local timezone and write timezone tests.
-- Before App Store / Play Store submission, add assets, bundle ID, privacy policy, user testing, accessibility, localization, appropriate security and required store disclosures.
+## Dosyalar
 
-## GitHub aktarımı
+| Dosya | Görevi |
+| --- | --- |
+| App.tsx | Ekranlar, bütçe hesapları ve kayıt yönetimi |
+| package.json | Bağımlılıklar ve çalıştırma komutları |
+| app.json | Expo ve mobil uygulama ayarları |
+| tsconfig.json | TypeScript yapılandırması |
+| .gitignore | Yerel bağımlılık ve gizli dosyaları dışlama |
 
-16 Ekim 2026: Mevcut mobil v0.2 arşivinden aktarıldı. Arşiv etiketi ve app.json 0.2.0, package.json 0.1.0 sürümünü taşıyor. Bu aktarımda uygulama kodu değiştirilmedi. Cihaz ve derleme testleri bu aktarım sırasında çalıştırılmadı.
+## Mevcut sınırlar
+
+- Fiziksel Android/iOS cihaz testi ve bu aktarım sırasında derleme testi yapılmadı.
+- AsyncStorage şifreli değildir; hassas finansal ayrıntılar için uygun güvenli depolama henüz yoktur.
+- Para birimi seçimi yalnızca gösterimi değiştirir; mevcut tutarları dönüştürmez. Tek kayıt düzeninde tek para birimi kullanılmalıdır.
+- Başlangıç bakiyesi, uygulamaya kaydedilecek işlemlerden önceki bakiye olmalıdır; aynı hareket iki kez hesaba katılmamalıdır.
+- Fatura ve birikim tutarları elle girilir. Ödenmiş faturalar yeniden planlanan tutara eklenmemelidir.
+- İki ondalık basamak desteklenir; sıfır veya üç ondalıklı para birimleri uygulanmadı.
+- Aylık gruplama UTC kullanır; yerel saat dilimi iyileştirmesi bekliyor.
+- Banka bağlantısı, bulut yedekleme, giriş, abonelik, bildirim ve çeviri bulunmuyor.
+- Günlük bütçe bir tahmindir; girilmeyen borçları, faizleri veya düzensiz gelecek gelirlerini kapsamaz ve finansal tavsiye değildir.
+
+## Sonraki adımlar
+
+1. Cihaz üzerinde kayıt, silme ve yeniden açma akışlarını doğrulamak.
+2. Türkçe arayüz ve yerel tarih hesaplarını geliştirmek.
+3. Güvenli depolama, erişilebilirlik ve mağaza gerekliliklerini tamamlamak.
+
+## Geliştirme kaydı
+
+- **16 Ekim 2026:** Mobil v0.2 arşivindeki kaynaklar GitHub'a aktarıldı; Türkçe kurulum ve proje tanıtımı eklendi.
+- Arşiv ve app.json 0.2.0, package.json ise 0.1.0 sürümünü taşır. Aktarım sırasında uygulama kodu değiştirilmedi.
+
+[← Tüm projeler](../README.md)
