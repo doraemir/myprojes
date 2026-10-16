@@ -1,19 +1,28 @@
-# LingoNova
+# 🎓 LingoNova
+### Dersleri ve eğitim süreçlerini tek yerde buluşturan platform
 
-Ders planlama ve canlı ders platformu. Proje kapsamı: yönetici, öğretmen ve öğrenci panelleri; ders programı, davet bağlantıları ve tahsilat takibi.
+Öğrenci, öğretmen ve yönetici süreçlerini ortak bir platformda düzenlemeyi hedefleyen ders planlama ve canlı eğitim projesi.
 
-## Mevcut durum
+## Proje kapsamı
 
-Bu klasör proje açıklaması için oluşturulmuştur. Kaynak kod ve varlık aktarımı henüz tamamlanmamıştır. Yukarıdaki kapsam, özelliklerin tamamının çalışır durumda olduğu anlamına gelmez.
+- Rol bazlı yönetici, öğretmen ve öğrenci panelleri
+- Ders programı, paylaşılabilir davet bağlantıları ve canlı ders akışı
+- Ders oluşturma e-postaları ve hatırlatmalar
+- Ders tamamlama, ücret tanımlama ve tahsilat takibi
+- Kelime kartları ve öğrenme etkinlikleri
+
+## Depodaki durum
+
+Bu klasörde şu anda Türkçe proje tanıtımı bulunmaktadır. Kaynak kodlar henüz aktarılmadı. Kapsam listesi geliştirme hedeflerini anlatır; tamamlanmış ve test edilmiş özellik listesi değildir.
 
 ## Sonraki adımlar
 
-1. Mevcut kaynak dosyalarını bul ve incele.
-2. Gizli bilgileri ve kişisel verileri ayıkla.
-3. Kaynakları aktar; kurulum ve doğrulama sonuçlarını belgele.
+1. Mevcut web projesinin kaynaklarını inceleyerek aktarmak.
+2. Rol yetkilerini, ders akışlarını ve tahsilat işlemlerini doğrulamak.
+3. E-posta doğrulama ve güvenlik yapılandırmasını belgelemek.
 
 ## Geliştirme kaydı
 
-- 16 Ekim 2026: Proje açıklaması ve klasörü oluşturuldu.
+- **16 Ekim 2026:** Proje klasörü oluşturuldu; Türkçe tanıtım, kapsam ve sonraki adımlar düzenlendi.
 
-Bundan sonraki değişiklikler gerçek commitlerle kaydedilecektir. Otomatik senkronizasyon henüz kurulmamıştır.
+[← Tüm projeler](../README.md)
