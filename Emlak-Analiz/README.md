@@ -1,19 +1,29 @@
-# Emlak Analiz
+# 🏠 Emlak Analiz
+### Bir ilandan daha fazlasını görmek
 
-İlan bağlantısından bölge değerlendirmesi ve alternatif ilan karşılaştırması hedefleyen proje. Kapsam: ulaşım, fiyat, bina özellikleri ve kaynaklı bölge risk bilgileri.
+Kullanıcının paylaştığı konut ilanını çevresiyle birlikte değerlendirip alternatiflerle karşılaştırmayı hedefleyen raporlama projesi.
 
-## Mevcut durum
+## Proje kapsamı
 
-Bu klasör proje açıklaması için oluşturulmuştur. Kaynak kod ve varlık aktarımı henüz tamamlanmamıştır. Yukarıdaki kapsam, özelliklerin tamamının çalışır durumda olduğu anlamına gelmez.
+- İlan bağlantısı üzerinden karşılaştırmalı değerlendirme
+- Benzer metrekare ve bina yaşındaki kiralık/satılık ilanları karşılaştırma
+- Metro, ulaşım, market ve otopark erişimi
+- Kat, bina özellikleri ve bölgesel altyapı değerlendirmesi
+- Kaynak gösterilerek bölgesel deprem tehlikesi bilgisi ve veri eksikliklerinin belirtilmesi
+- Artılar, eksiler ve alternatiflerden oluşan anlaşılır rapor
+
+## Depodaki durum
+
+Bu klasörde şu anda Türkçe proje tanıtımı bulunmaktadır. Kaynak kodlar henüz aktarılmadı. Kapsam listesi geliştirme hedeflerini anlatır; tamamlanmış ve test edilmiş özellik listesi değildir.
 
 ## Sonraki adımlar
 
-1. Mevcut kaynak dosyalarını bul ve incele.
-2. Gizli bilgileri ve kişisel verileri ayıkla.
-3. Kaynakları aktar; kurulum ve doğrulama sonuçlarını belgele.
+1. Mevcut uygulama kaynaklarını inceleyerek aktarmak.
+2. İlan ve bölge verilerinin erişim yöntemlerini belirlemek.
+3. Kaynak ve güncellik bilgisi içeren örnek rapor akışını doğrulamak.
 
 ## Geliştirme kaydı
 
-- 16 Ekim 2026: Proje açıklaması ve klasörü oluşturuldu.
+- **16 Ekim 2026:** Proje klasörü oluşturuldu; Türkçe tanıtım, kapsam ve sonraki adımlar düzenlendi.
 
-Bundan sonraki değişiklikler gerçek commitlerle kaydedilecektir. Otomatik senkronizasyon henüz kurulmamıştır.
+[← Tüm projeler](../README.md)
