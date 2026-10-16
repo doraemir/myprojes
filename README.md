@@ -1,18 +1,40 @@
-# Emircan Dora — Projeler
+<div align="center">
 
-Bu depo, projelerin kaynaklarını ve geliştirme kayıtlarını ayrı klasörlerde toplamak için oluşturulmuştur.
+# Emircan Dora
+### Mobil uygulamalar · Web platformları · Oyun geliştirme
 
-| Proje | Klasör | Durum |
-| --- | --- | --- |
-| CepPilot | [CepPilot](./CepPilot/) | Mobil MVP v0.2 kaynakları aktarıldı; cihaz testi bekliyor |
-| LingoNova | [LingoNova](./LingoNova/) | Açıklama eklendi; kaynak aktarımı bekliyor |
-| Apaka English | [Apaka-English](./Apaka-English/) | Açıklama eklendi; kaynak aktarımı bekliyor |
-| Emlak Analiz | [Emlak-Analiz](./Emlak-Analiz/) | Açıklama eklendi; kaynak aktarımı bekliyor |
-| NutriAI | [NutriAI](./NutriAI/) | Açıklama eklendi; kaynak aktarımı bekliyor |
-| Araba Park Oyunu | [Araba-Park-Oyunu](./Araba-Park-Oyunu/) | Açıklama eklendi; kaynak aktarımı bekliyor |
+Günlük ihtiyaçları kullanışlı dijital ürünlere dönüştürmek için geliştirdiğim projeler.
 
-## Çalışma düzeni
+[GitHub](https://github.com/doraemir) · [LinkedIn](https://www.linkedin.com/in/emircandora/)
 
-Her projenin kurulumu ve doğrulama bilgileri kendi README dosyasında tutulacaktır. Gerçek değişiklikler açıklamalı commitlerle kaydedilecek; geçmiş geliştirme aşamaları için yapay commit geçmişi oluşturulmayacaktır.
+</div>
 
-CepPilot kaynakları aktarıldı; diğer projelerin kaynak aktarımı bekliyor. Otomatik senkronizasyon henüz kurulmadı.
+---
+
+## Projelerim
+
+| Proje | Amaç | Depodaki durum |
+| :--- | :--- | :--- |
+| [💰 CepPilot](./CepPilot/) | Gelir, gider ve günlük bütçe takibi | Mobil MVP kaynakları yüklü |
+| [🎓 LingoNova](./LingoNova/) | Ders planlama ve canlı eğitim yönetimi | Proje tanıtımı; kaynak aktarımı bekliyor |
+| [🦙 Apaka English](./Apaka-English/) | Maskotla İngilizce öğrenme içerikleri | İçerik projesi tanıtımı |
+| [🏠 Emlak Analiz](./Emlak-Analiz/) | İlan ve bölge karşılaştırma raporları | Proje tanıtımı; kaynak aktarımı bekliyor |
+| [🥗 NutriAI](./NutriAI/) | Haftalık beslenme ve alışveriş planlama | Proje tanıtımı; kaynak aktarımı bekliyor |
+| [🚗 Araba Park Oyunu](./Araba-Park-Oyunu/) | Sürüş ve park deneyimi | Proje tanıtımı; kaynak aktarımı bekliyor |
+
+## Odak alanlarım
+
+- **Mobil:** React Native, Expo ve TypeScript ile uygulama geliştirme.
+- **Uygulama entegrasyonu:** C# API servisleriyle veri alışverişi.
+- **Ürün deneyimi:** Anlaşılır akışlar, sade arayüzler ve görsel geri bildirim.
+- **Yapay zekâ destekli üretim:** Geliştirme ve eğitim içeriği hazırlama süreçleri.
+
+## Depoyu keşfet
+
+Her proje kendi klasöründe yer alır. Projenin amacı, kapsamı, mevcut durumu ve sonraki adımları ilgili README dosyasında açıklanır.
+
+**Başlangıç:** Kaynakları bulunan [CepPilot kurulum rehberini](./CepPilot/README.md) inceleyebilirsin.
+
+## Geliştirme durumu
+
+Projeler geliştirme aşamasındadır. Tanıtım sayfalarındaki hedefler, tamamlanmış özellik listesi olarak değerlendirilmemelidir. CepPilot fiziksel cihazda henüz doğrulanmamıştır. Otomatik GitHub senkronizasyonu henüz kurulmamıştır.
