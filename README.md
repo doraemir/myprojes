@@ -4,7 +4,7 @@ Bu depo, projelerin kaynaklarını ve geliştirme kayıtlarını ayrı klasörle
 
 | Proje | Klasör | Durum |
 | --- | --- | --- |
-| CepPilot | [CepPilot](./CepPilot/) | Açıklama eklendi; kaynak aktarımı bekliyor |
+| CepPilot | [CepPilot](./CepPilot/) | Mobil MVP v0.2 kaynakları aktarıldı; cihaz testi bekliyor |
 | LingoNova | [LingoNova](./LingoNova/) | Açıklama eklendi; kaynak aktarımı bekliyor |
 | Apaka English | [Apaka-English](./Apaka-English/) | Açıklama eklendi; kaynak aktarımı bekliyor |
 | Emlak Analiz | [Emlak-Analiz](./Emlak-Analiz/) | Açıklama eklendi; kaynak aktarımı bekliyor |
@@ -15,4 +15,4 @@ Bu depo, projelerin kaynaklarını ve geliştirme kayıtlarını ayrı klasörle
 
 Her projenin kurulumu ve doğrulama bilgileri kendi README dosyasında tutulacaktır. Gerçek değişiklikler açıklamalı commitlerle kaydedilecek; geçmiş geliştirme aşamaları için yapay commit geçmişi oluşturulmayacaktır.
 
-Kaynak kodlar henüz aktarılmadı. Otomatik senkronizasyon henüz kurulmadı.
+CepPilot kaynakları aktarıldı; diğer projelerin kaynak aktarımı bekliyor. Otomatik senkronizasyon henüz kurulmadı.
