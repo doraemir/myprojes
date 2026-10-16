@@ -1,19 +1,29 @@
-# NutriAI
+# 🥗 NutriAI
+### Hedefe ve bütçeye göre haftalık beslenme planı
 
-React Native ve TypeScript tabanlı beslenme planlayıcı projesi. Hedef akış: karşılama → hedef → profil → tercihler → haftalık plan → alışveriş listesi. C# /create-plan API entegrasyonu proje kapsamındadır.
+Kullanıcının hedefi, profil bilgileri, bütçesi ve beslenme tercihlerinden haftalık öğün planı ve alışveriş listesi üretmeyi hedefleyen mobil proje.
 
-## Mevcut durum
+## Proje kapsamı
 
-Bu klasör proje açıklaması için oluşturulmuştur. Kaynak kod ve varlık aktarımı henüz tamamlanmamıştır. Yukarıdaki kapsam, özelliklerin tamamının çalışır durumda olduğu anlamına gelmez.
+- Karşılama → hedef → profil → tercihler → plan → alışveriş akışı
+- Yaş, boy, kilo ve haftalık bütçe girdileri
+- Vejetaryen beslenme tercihi
+- Yedi günlük kahvaltı, öğle ve akşam planı
+- Öğünlerle bağlantılı alışveriş listesi
+- React Native / TypeScript ve C# /create-plan API entegrasyonu
+
+## Depodaki durum
+
+Bu klasörde şu anda Türkçe proje tanıtımı bulunmaktadır. Kaynak kodlar henüz aktarılmadı. Kapsam listesi geliştirme hedeflerini anlatır; tamamlanmış ve test edilmiş özellik listesi değildir.
 
 ## Sonraki adımlar
 
-1. Mevcut kaynak dosyalarını bul ve incele.
-2. Gizli bilgileri ve kişisel verileri ayıkla.
-3. Kaynakları aktar; kurulum ve doğrulama sonuçlarını belgele.
+1. Mevcut mobil uygulama ve C# servis kaynaklarını aktarmak.
+2. İstek/yanıt tiplerini ve hata durumlarını doğrulamak.
+3. Plan ve alışveriş listesi akışını uçtan uca test etmek.
 
 ## Geliştirme kaydı
 
-- 16 Ekim 2026: Proje açıklaması ve klasörü oluşturuldu.
+- **16 Ekim 2026:** Proje klasörü oluşturuldu; Türkçe tanıtım, kapsam ve sonraki adımlar düzenlendi.
 
-Bundan sonraki değişiklikler gerçek commitlerle kaydedilecektir. Otomatik senkronizasyon henüz kurulmamıştır.
+[← Tüm projeler](../README.md)
