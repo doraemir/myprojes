@@ -1,19 +1,31 @@
 # Apaka English
+### İngilizceyi hikâyelerle ve bir maskotla anlatmak
 
-Maskotla İngilizce öğretmeye yönelik içerik projesi. Senaryolar, video üretim yönergeleri ve uygun görsel varlıklar bu klasörde düzenlenecek.
+Kısa eğitim videoları için karakter tutarlılığı, senaryo ve sahne akışını bir araya getiren yaratıcı içerik projesi.
 
-## Mevcut durum
+## Proje kapsamı
 
-Bu klasör proje açıklaması için oluşturulmuştur. Kaynak kod ve varlık aktarımı henüz tamamlanmamıştır. Yukarıdaki kapsam, özelliklerin tamamının çalışır durumda olduğu anlamına gelmez.
+- Aynı maskotun yüzünü, renklerini ve ayırt edici özelliklerini koruyan karakter yönergeleri
+- İngilizce kelime ve ifade öğretimine yönelik kısa senaryolar
+- Instagram Reels ve TikTok için sahne, geçiş ve altyazı planları
+- Yapay zekâ ile görsel ve video üretimi için düzenlenebilir yönergeler
+
+## Depodaki durum
+
+Bu klasörde şu anda Türkçe proje tanıtımı bulunmaktadır. Senaryo ve görsel dosyaları henüz aktarılmadı. Kapsam listesi geliştirme hedeflerini anlatır; tamamlanmış ve test edilmiş özellik listesi değildir.
 
 ## Sonraki adımlar
 
-1. Mevcut kaynak dosyalarını bul ve incele.
-2. Gizli bilgileri ve kişisel verileri ayıkla.
-3. Kaynakları aktar; kurulum ve doğrulama sonuçlarını belgele.
+1. Mevcut senaryoları ve üretim yönergelerini düzenlemek.
+2. Paylaşılabilecek maskot görsellerini ve örnek içerikleri eklemek.
+3. İçerikleri konu bazında arşivlemek.
+
+## İçerik yapısı
+
+Bu proje bir yazılım uygulaması olmak zorunda değildir; senaryolar, üretim yönergeleri ve paylaşılabilir medya örnekleriyle sunulacaktır.
 
 ## Geliştirme kaydı
 
-- 16 Ekim 2026: Proje açıklaması ve klasörü oluşturuldu.
+- **16 Ekim 2026:** Proje klasörü oluşturuldu; Türkçe tanıtım, kapsam ve sonraki adımlar düzenlendi.
 
-Bundan sonraki değişiklikler gerçek commitlerle kaydedilecektir. Otomatik senkronizasyon henüz kurulmamıştır.
+[← Tüm projeler](../README.md)
