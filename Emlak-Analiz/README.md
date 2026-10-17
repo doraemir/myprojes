@@ -1,29 +1,38 @@
-# 🏠 Emlak Analiz
-### Bir ilandan daha fazlasını görmek
+# 🏠 EvPusula — Emlak Analiz
 
-Kullanıcının paylaştığı konut ilanını çevresiyle birlikte değerlendirip alternatiflerle karşılaştırmayı hedefleyen raporlama projesi.
+**JavaScript · TypeScript · React · Vinext · Cloudflare Workers**
 
-## Proje kapsamı
+## Türkçe
 
-- İlan bağlantısı üzerinden karşılaştırmalı değerlendirme
-- Benzer metrekare ve bina yaşındaki kiralık/satılık ilanları karşılaştırma
-- Metro, ulaşım, market ve otopark erişimi
-- Kat, bina özellikleri ve bölgesel altyapı değerlendirmesi
-- Kaynak gösterilerek bölgesel deprem tehlikesi bilgisi ve veri eksikliklerinin belirtilmesi
-- Artılar, eksiler ve alternatiflerden oluşan anlaşılır rapor
+İlan bağlantısı ve kullanıcının sağladığı bilgilerle çevre/emsal raporu hazırlayan web uygulaması. İlan metni çıkarımı, rapor şablonları, çevre sorgusu ve karşılaştırma kuralları kaynakları eklendi.
 
-## Depodaki durum
+### Kurulum
 
-Bu klasörde şu anda Türkçe proje tanıtımı bulunmaktadır. Kaynak kodlar henüz aktarılmadı. Kapsam listesi geliştirme hedeflerini anlatır; tamamlanmış ve test edilmiş özellik listesi değildir.
+Komutları bu proje klasöründe çalıştırın. Node.js/npm gereklidir; web projelerinin Node.js alt sınırı package.json içindedir.
 
-## Sonraki adımlar
+```bash
+npm install
+npm run dev
+# Bağımsız kontroller / Standalone checks:
+node --test tests/*.test.mjs
+```
 
-1. Mevcut uygulama kaynaklarını inceleyerek aktarmak.
-2. İlan ve bölge verilerinin erişim yöntemlerini belirlemek.
-3. Kaynak ve güncellik bilgisi içeren örnek rapor akışını doğrulamak.
+### Doğrulama ve sınırlar / Validation and limitations
 
-## Geliştirme kaydı
+19 bağımsız test geçti. Build ve tarayıcı testi yapılmadı. Bağlantıdan otomatik ilan kazıma veya tüm internetten emsal arama entegre değildir; canlı harita sağlayıcısı bu kontrolde doğrulanmadı. / 19 standalone tests passed. Build/browser tests were not run. Automatic listing scraping and web-wide comparable search are not integrated; live map provider behavior is unverified.
 
-- **16 Ekim 2026:** Proje klasörü oluşturuldu; Türkçe tanıtım, kapsam ve sonraki adımlar düzenlendi.
+## English
 
-[← Tüm projeler](../README.md)
+Property and neighborhood reporting app based on listing URLs and user-supplied data. Includes text parsing, report templates, nearby queries and comparable-property rules.
+
+Run the commands above from this project folder. Web snapshots preserve their Sites-specific build integration; configure the hosting environment before deployment. A source upload does not imply production readiness.
+
+## Kaynak ve değişiklik kaydı / Source and change log
+
+- **17 Ekim / October 2026:** Erişilebilir en güncel kaynak paketi veya Sites kaynak deposu aktarıldı. / Imported the latest accessible package or Site source snapshot.
+- Gizli dosyalar, yerel bağımlılıklar ve runtime verileri dahil edilmedi. / Secrets, local dependencies and runtime data are excluded.
+- Mevcut kaynak notları varsa SOURCE_NOTES.md ve paket içindeki README belgelerinde korunur. / Original notes are retained where available.
+- Uygulama özellikleri bu aktarım için yeniden yazılmadı. / Application features were not rewritten for this transfer.
+
+[← Tüm projeler / All projects](../README.md)
+

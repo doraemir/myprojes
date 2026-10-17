@@ -1,0 +1,14 @@
+NUTRIAI - FULL PAKET
+
+1) API terminali:
+cd "<Klasor>\NutriAI.Api"
+dotnet run
+API: http://localhost:5276
+
+2) Mobil/Web terminali:
+cd "<Klasor>\MobileApp"
+npm install --legacy-peer-deps
+npx expo start --web --port 8085
+Web: http://localhost:8085
+
+Iki terminali de acik tutun.

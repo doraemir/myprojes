@@ -1,0 +1,1 @@
+Diğer sohbetteki gerçek PNG/SVG dosyaları bu görüşmede erişilebilir değil. Paylaşılınca assets içine eklenerek Image bileşenlerine bağlanacak.

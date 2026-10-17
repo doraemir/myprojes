@@ -1,0 +1,8 @@
+import {auditValues} from '@/lib/security';
+import { account } from '@/lib/auth';
+import {getDb} from '@/db';
+import {accounts,auditEvents} from '@/db/schema';
+import {eq} from 'drizzle-orm';
+const permissionKeys=['students','lessons','payments','invites'] as const;
+export async function GET(request:Request){const user=await account(request);if(user instanceof Response)return user;if(!user.admin)return Response.json({error:'Yalnızca yönetici.'},{status:403});return Response.json(await getDb().select().from(accounts).orderBy(accounts.email));}
+export async function PATCH(request:Request){const user=await account(request);if(user instanceof Response)return user;if(!user.admin)return Response.json({error:'Yalnızca yönetici.'},{status:403});const body=await request.json() as {uid?:string;role?:string;permissions?:Record<string,unknown>};if(!body.uid||!['teacher','student'].includes(body.role||'')||typeof body.permissions!=='object'||!body.permissions)return Response.json({error:'Geçersiz yetki.'},{status:400});const [target]=await getDb().select().from(accounts).where(eq(accounts.uid,body.uid)).limit(1);if(!target||target.uid===user.uid||target.role==='admin')return Response.json({error:'Bu hesabın yetkisi değiştirilemez.'},{status:400});const permissions=Object.fromEntries(permissionKeys.map(k=>[k,body.role==='teacher'&&body.permissions?.[k]===true]));const db=getDb();await db.batch([db.update(accounts).set({role:body.role,permissions:JSON.stringify(permissions)}).where(eq(accounts.uid,body.uid)),db.insert(auditEvents).values(auditValues(user,'role.changed',body.uid,{before:target.role,after:body.role,permissions}))]);return Response.json({ok:true});}

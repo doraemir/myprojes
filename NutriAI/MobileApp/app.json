@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "NutriAI",
+    "slug": "nutriai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "NutriAI yakınındaki marketleri göstermek ve fiyatları bulunduğun konuma göre karşılaştırmak için konumunu kullanır."
+        }
+      ]
+    ]
+  }
+}

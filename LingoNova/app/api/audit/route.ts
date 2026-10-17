@@ -1,0 +1,2 @@
+import {account} from '@/lib/auth';import {env} from 'cloudflare:workers';
+export async function GET(request:Request){const user=await account(request);if(user instanceof Response)return user;if(!user.admin)return Response.json({error:'Yalnızca yönetici.'},{status:403});const rows=await env.DB!.prepare('SELECT id,actor_email,action,target,details,created_at FROM audit_events ORDER BY created_at DESC LIMIT 300').all();return Response.json(rows.results,{headers:{'Cache-Control':'no-store'}});}

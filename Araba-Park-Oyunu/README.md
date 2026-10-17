@@ -27,3 +27,9 @@ Bu klasörde şu anda Türkçe proje tanıtımı bulunmaktadır. Kaynak kodlar h
 - **16 Ekim 2026:** Proje klasörü oluşturuldu; Türkçe tanıtım, kapsam ve sonraki adımlar düzenlendi.
 
 [← Tüm projeler](../README.md)
+
+## English
+
+Parking simulation project focused on driving controls, automatic transmission and parking feedback. The original source package could not be located among accessible files or Sites projects during the October 17, 2026 transfer. This folder currently contains documentation only; no replacement source was invented.
+
+**Kaynak gerekli / Source needed:** Mevcut oyun klasörünü ZIP olarak paylaşın. / Share the existing game project as a ZIP archive.

@@ -1,0 +1,1 @@
+ALTER TABLE `learning_members` ADD `account_uid` text DEFAULT '' NOT NULL;

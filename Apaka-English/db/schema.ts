@@ -1,0 +1,17 @@
+import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+export const users = sqliteTable('users', { id:text('id').primaryKey(), email:text('email').notNull().unique(), name:text('name').notNull(), role:text('role').notNull().default('student'), status:text('status').notNull().default('active'), level:text('level').notNull().default('A1'), created:text('created').notNull() });
+export const entities=sqliteTable('entities',{id:text('id').primaryKey(),kind:text('kind').notNull(),course_id:text('course_id'),title:text('title').notNull(),data:text('data').notNull().default('{}'),created:text('created').notNull()});
+export const enrollments=sqliteTable('enrollments',{id:text('id').primaryKey(),user_id:text('user_id').notNull(),course_id:text('course_id').notNull(),created:text('created').notNull()});
+export const progress=sqliteTable('progress',{id:text('id').primaryKey(),user_id:text('user_id').notNull(),lesson_id:text('lesson_id').notNull(),created:text('created').notNull()});
+export const attempts=sqliteTable('attempts',{id:text('id').primaryKey(),user_id:text('user_id').notNull(),quiz_id:text('quiz_id').notNull(),score:integer('score').notNull(),data:text('data').notNull(),created:text('created').notNull()});
+export const submissions=sqliteTable('submissions',{id:text('id').primaryKey(),user_id:text('user_id').notNull(),assignment_id:text('assignment_id').notNull(),answer:text('answer').notNull(),file_key:text('file_key'),status:text('status').notNull().default('pending'),feedback:text('feedback').notNull().default(''),grade:integer('grade'),created:text('created').notNull()});
+export const messages=sqliteTable('messages',{id:text('id').primaryKey(),sender:text('sender').notNull(),recipient:text('recipient').notNull(),body:text('body').notNull(),read_at:text('read_at'),created:text('created').notNull()});
+export const payments=sqliteTable('payments',{id:text('id').primaryKey(),user_id:text('user_id').notNull(),course_id:text('course_id'),title:text('title').notNull(),amount:integer('amount').notNull(),due:text('due').notNull(),status:text('status').notNull().default('pending'),paid_at:text('paid_at'),created:text('created').notNull()});
+export const attendance=sqliteTable('attendance',{id:text('id').primaryKey(),user_id:text('user_id').notNull(),event_id:text('event_id').notNull(),created:text('created').notNull()});
+export const certificates=sqliteTable('certificates',{id:text('id').primaryKey(),user_id:text('user_id').notNull(),course_id:text('course_id').notNull(),created:text('created').notNull()});
+export const audit=sqliteTable('audit',{id:text('id').primaryKey(),actor:text('actor').notNull(),action:text('action').notNull(),created:text('created').notNull()});
+export const settings=sqliteTable('settings',{id:text('id').primaryKey(),data:text('data').notNull()});
+export const credentials=sqliteTable('credentials',{user_id:text('user_id').primaryKey(),hash:text('hash').notNull(),salt:text('salt').notNull(),updated:text('updated').notNull()});
+export const sessions=sqliteTable('sessions',{id:text('id').primaryKey(),user_id:text('user_id').notNull(),expires:text('expires').notNull()});
+export const auth_limits=sqliteTable('auth_limits',{id:text('id').primaryKey(),count:integer('count').notNull(),expires:text('expires').notNull()});
+export const password_links=sqliteTable('password_links',{id:text('id').primaryKey(),user_id:text('user_id').notNull(),expires:text('expires').notNull()});

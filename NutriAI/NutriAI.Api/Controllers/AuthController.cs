@@ -1,0 +1,15 @@
+using Microsoft.AspNetCore.Authorization;using Microsoft.AspNetCore.Mvc;using Microsoft.EntityFrameworkCore;using NutriAI.Api.Data;using NutriAI.Api.Services;
+namespace NutriAI.Api.Controllers;
+[ApiController][Route("api/auth")]
+public class AuthController(NutriDbContext db,AuthService auth):ControllerBase
+{
+ public record Credentials(string Email,string Password,string? DisplayName);
+ public record RefreshRequest(string RefreshToken);
+ [HttpPost("register")][AllowAnonymous] public async Task<IActionResult> Register(Credentials r){var email=(r.Email??"").Trim().ToLowerInvariant();if(!email.Contains('@')||r.Password?.Length<10)return BadRequest(new{message="Geçerli e-posta ve en az 10 karakterli şifre gerekli."});if(await db.Users.AnyAsync(x=>x.Email==email))return Conflict(new{message="Bu e-posta zaten kayıtlı."});var u=new AppUser{Email=email,DisplayName=(r.DisplayName??"").Trim(),PasswordHash=auth.HashPassword(r.Password)};db.Users.Add(u);await db.SaveChangesAsync();return await Issue(u);}
+ [HttpPost("login")][AllowAnonymous] public async Task<IActionResult> Login(Credentials r){var email=(r.Email??"").Trim().ToLowerInvariant();var u=await db.Users.SingleOrDefaultAsync(x=>x.Email==email);if(u==null||!auth.VerifyPassword(r.Password??"",u.PasswordHash))return Unauthorized(new{message="E-posta veya şifre hatalı."});return await Issue(u);}
+ [HttpPost("refresh")][AllowAnonymous] public async Task<IActionResult> Refresh(RefreshRequest r){var h=AuthService.Hash(r.RefreshToken??"");var old=await db.RefreshTokens.SingleOrDefaultAsync(x=>x.TokenHash==h&&x.RevokedAt==null);if(old==null||old.ExpiresAt<=DateTime.UtcNow)return Unauthorized();old.RevokedAt=DateTime.UtcNow;var u=await db.Users.FindAsync(old.UserId);if(u==null)return Unauthorized();return await Issue(u);}
+ [HttpPost("logout")][AllowAnonymous] public async Task<IActionResult> Logout(RefreshRequest r){var h=AuthService.Hash(r.RefreshToken??"");var t=await db.RefreshTokens.SingleOrDefaultAsync(x=>x.TokenHash==h);if(t!=null){t.RevokedAt=DateTime.UtcNow;await db.SaveChangesAsync();}return Ok(new{success=true});}
+
+ [HttpDelete("account")][Authorize] public async Task<IActionResult> DeleteAccount(){var raw=User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value??User.FindFirst("sub")?.Value;if(!Guid.TryParse(raw,out var id))return Unauthorized();var states=db.UserStates.Where(x=>x.UserId==id);var tokens=db.RefreshTokens.Where(x=>x.UserId==id);var xp=db.XPTransactions.Where(x=>x.UserId==id);db.UserStates.RemoveRange(states);db.RefreshTokens.RemoveRange(tokens);db.XPTransactions.RemoveRange(xp);var u=await db.Users.FindAsync(id);if(u!=null)db.Users.Remove(u);await db.SaveChangesAsync();return Ok(new{success=true});}
+ async Task<IActionResult> Issue(AppUser u){var (raw,hash)=auth.NewRefresh();db.RefreshTokens.Add(new RefreshToken{UserId=u.Id,TokenHash=hash,ExpiresAt=DateTime.UtcNow.AddDays(30)});await db.SaveChangesAsync();return Ok(new{accessToken=auth.AccessToken(u),refreshToken=raw,user=new{u.Id,u.Email,u.DisplayName}});}
+}

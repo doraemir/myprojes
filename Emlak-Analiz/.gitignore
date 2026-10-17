@@ -1,0 +1,15 @@
+node_modules/
+.expo/
+.next/
+dist/
+.wrangler/
+.sites-runtime/
+.env
+.env.*
+!.env.example
+.dev.vars
+*.tsbuildinfo
+*.db
+*.sqlite*
+bin/
+obj/

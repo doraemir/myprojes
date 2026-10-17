@@ -1,0 +1,24 @@
+NUTRIAI - BU SÜRÜMDE YAPILANLAR
+
+1. Profil ekranı
+   - Haftalık bütçe korunuyor.
+   - Kişi sayısı eklendi.
+   - Ekonomik / Ortalama / Lüks bütçe modu eklendi.
+
+2. Tercihler ekranı
+   - Normal / Vejetaryen / Vegan / Pesketaryen seçenekleri eklendi.
+   - Süt, yumurta, gluten, yer fıstığı, kuruyemiş, balık,
+     kabuklu deniz ürünü, soya ve susam alerji seçenekleri eklendi.
+   - Sevmediğin yiyecekler alanı eklendi.
+   - 2-5 öğün seçimi eklendi.
+
+3. Plan ekranı
+   - Seçilen beslenme ve bütçe ayarlarına göre plan hazırlanır.
+   - “Değiştir” butonu ile öğün alternatifi gelir.
+   - Alışveriş listesi değişen öğüne göre otomatik güncellenir.
+
+4. Alışveriş ekranı
+   - Haftalık bütçe doğrudan değiştirilebilir.
+   - Ekonomik / Ortalama / Lüks sepet seviyesi değiştirilebilir.
+   - Kişi sayısına göre miktarlar hesaplanır.
+   - Canlı market fiyat sistemi ve fiyat yenileme korunur.

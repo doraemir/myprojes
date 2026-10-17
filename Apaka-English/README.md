@@ -1,31 +1,38 @@
-# Apaka English
-### İngilizceyi hikâyelerle ve bir maskotla anlatmak
+# Apaka Online Dil Okulu
 
-Kısa eğitim videoları için karakter tutarlılığı, senaryo ve sahne akışını bir araya getiren yaratıcı içerik projesi.
+**React · TypeScript · Vinext · Cloudflare Workers · D1**
 
-## Proje kapsamı
+![Apaka logosu](public/assets/logo.png)
 
-- Aynı maskotun yüzünü, renklerini ve ayırt edici özelliklerini koruyan karakter yönergeleri
-- İngilizce kelime ve ifade öğretimine yönelik kısa senaryolar
-- Instagram Reels ve TikTok için sahne, geçiş ve altyazı planları
-- Yapay zekâ ile görsel ve video üretimi için düzenlenebilir yönergeler
+## Türkçe
 
-## Depodaki durum
+İngilizce öğrenme platformu: öğrenci portalı, program/ders/quiz akışları, ödevler ve yönetim ekranları. Önceki yalnızca içerik projesi tanıtımı, mevcut web uygulaması kaynaklarıyla genişletildi.
 
-Bu klasörde şu anda Türkçe proje tanıtımı bulunmaktadır. Senaryo ve görsel dosyaları henüz aktarılmadı. Kapsam listesi geliştirme hedeflerini anlatır; tamamlanmış ve test edilmiş özellik listesi değildir.
+### Kurulum
 
-## Sonraki adımlar
+Komutları bu proje klasöründe çalıştırın. Node.js/npm gereklidir; web projelerinin Node.js alt sınırı package.json içindedir.
 
-1. Mevcut senaryoları ve üretim yönergelerini düzenlemek.
-2. Paylaşılabilecek maskot görsellerini ve örnek içerikleri eklemek.
-3. İçerikleri konu bazında arşivlemek.
+```bash
+npm install
+npm run dev
+```
 
-## İçerik yapısı
+### Doğrulama ve sınırlar / Validation and limitations
 
-Bu proje bir yazılım uygulaması olmak zorunda değildir; senaryolar, üretim yönergeleri ve paylaşılabilir medya örnekleriyle sunulacaktır.
+Tema testi geçti. Seviye testi bağımlılıklar kurulmadığı için çalıştırılamadı; build ve tarayıcı testi yapılmadı. Cloudflare D1 ve runtime yapılandırması gerekir. Kaynaktaki sahip e-postası owner@example.com ile örneklendi; kendi yetkilendirme yapılandırmanız gerekir. / Theme test passed; placement test was blocked by missing dependencies. Build/browser tests were not run. Configure D1, runtime secrets and owner identity. No live student or payment database is included.
 
-## Geliştirme kaydı
+## English
 
-- **16 Ekim 2026:** Proje klasörü oluşturuldu; Türkçe tanıtım, kapsam ve sonraki adımlar düzenlendi.
+English learning platform with student portal, programs, lessons, quizzes, assignments and administration. This folder now contains the actual web application sources as well as learning media.
 
-[← Tüm projeler](../README.md)
+Run the commands above from this project folder. Web snapshots preserve their Sites-specific build integration; configure the hosting environment before deployment. A source upload does not imply production readiness.
+
+## Kaynak ve değişiklik kaydı / Source and change log
+
+- **17 Ekim / October 2026:** Erişilebilir en güncel kaynak paketi veya Sites kaynak deposu aktarıldı. / Imported the latest accessible package or Site source snapshot.
+- Gizli dosyalar, yerel bağımlılıklar ve runtime verileri dahil edilmedi. / Secrets, local dependencies and runtime data are excluded.
+- Mevcut kaynak notları varsa SOURCE_NOTES.md ve paket içindeki README belgelerinde korunur. / Original notes are retained where available.
+- Uygulama özellikleri bu aktarım için yeniden yazılmadı. / Application features were not rewritten for this transfer.
+
+[← Tüm projeler / All projects](../README.md)
+

@@ -1,28 +1,36 @@
 # 🎓 LingoNova
-### Dersleri ve eğitim süreçlerini tek yerde buluşturan platform
 
-Öğrenci, öğretmen ve yönetici süreçlerini ortak bir platformda düzenlemeyi hedefleyen ders planlama ve canlı eğitim projesi.
+**React · TypeScript · Vinext · Cloudflare Workers · D1**
 
-## Proje kapsamı
+## Türkçe
 
-- Rol bazlı yönetici, öğretmen ve öğrenci panelleri
-- Ders programı, paylaşılabilir davet bağlantıları ve canlı ders akışı
-- Ders oluşturma e-postaları ve hatırlatmalar
-- Ders tamamlama, ücret tanımlama ve tahsilat takibi
-- Kelime kartları ve öğrenme etkinlikleri
+Ders planlama, öğrenci/öğretmen/yönetici panelleri, hesap işlemleri ve tahsilat akışları içeren web platformu. API rotaları, bileşenler, veritabanı şema geçişleri ve test kaynakları aktarıldı.
 
-## Depodaki durum
+### Kurulum
 
-Bu klasörde şu anda Türkçe proje tanıtımı bulunmaktadır. Kaynak kodlar henüz aktarılmadı. Kapsam listesi geliştirme hedeflerini anlatır; tamamlanmış ve test edilmiş özellik listesi değildir.
+Komutları bu proje klasöründe çalıştırın. Node.js/npm gereklidir; web projelerinin Node.js alt sınırı package.json içindedir.
 
-## Sonraki adımlar
+```bash
+npm install
+npm run dev
+```
 
-1. Mevcut web projesinin kaynaklarını inceleyerek aktarmak.
-2. Rol yetkilerini, ders akışlarını ve tahsilat işlemlerini doğrulamak.
-3. E-posta doğrulama ve güvenlik yapılandırmasını belgelemek.
+### Doğrulama ve sınırlar / Validation and limitations
 
-## Geliştirme kaydı
+Sites/Cloudflare çalışma ortamı, D1 bağları ve kimlik/e-posta servislerinin ortam değişkenleri ayrıca yapılandırılmalıdır. Üretim sırları ve gerçek veritabanı aktarılmadı. Bu aktarımda build, tarayıcı ve bağımlılık gerektiren testler çalıştırılmadı. / Requires Sites/Cloudflare runtime, D1 bindings and external auth/email configuration. Production secrets and databases are excluded. Build and browser behavior are unverified in this transfer.
 
-- **16 Ekim 2026:** Proje klasörü oluşturuldu; Türkçe tanıtım, kapsam ve sonraki adımlar düzenlendi.
+## English
 
-[← Tüm projeler](../README.md)
+Education platform with lesson scheduling, student/teacher/admin interfaces, account flows and payment-record tracking. Includes API routes, components, database migrations and test sources.
+
+Run the commands above from this project folder. Web snapshots preserve their Sites-specific build integration; configure the hosting environment before deployment. A source upload does not imply production readiness.
+
+## Kaynak ve değişiklik kaydı / Source and change log
+
+- **17 Ekim / October 2026:** Erişilebilir en güncel kaynak paketi veya Sites kaynak deposu aktarıldı. / Imported the latest accessible package or Site source snapshot.
+- Gizli dosyalar, yerel bağımlılıklar ve runtime verileri dahil edilmedi. / Secrets, local dependencies and runtime data are excluded.
+- Mevcut kaynak notları varsa SOURCE_NOTES.md ve paket içindeki README belgelerinde korunur. / Original notes are retained where available.
+- Uygulama özellikleri bu aktarım için yeniden yazılmadı. / Application features were not rewritten for this transfer.
+
+[← Tüm projeler / All projects](../README.md)
+

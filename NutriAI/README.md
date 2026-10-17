@@ -1,29 +1,40 @@
-# 🥗 NutriAI
-### Hedefe ve bütçeye göre haftalık beslenme planı
+# 🥗 NutriAI — V11
 
-Kullanıcının hedefi, profil bilgileri, bütçesi ve beslenme tercihlerinden haftalık öğün planı ve alışveriş listesi üretmeyi hedefleyen mobil proje.
+**React Native · TypeScript · C# · ASP.NET Core · PostgreSQL**
 
-## Proje kapsamı
+## Türkçe
 
-- Karşılama → hedef → profil → tercihler → plan → alışveriş akışı
-- Yaş, boy, kilo ve haftalık bütçe girdileri
-- Vejetaryen beslenme tercihi
-- Yedi günlük kahvaltı, öğle ve akşam planı
-- Öğünlerle bağlantılı alışveriş listesi
-- React Native / TypeScript ve C# /create-plan API entegrasyonu
+Haftalık öğün planı, alışveriş listesi ve kullanıcı durumunu yöneten mobil uygulama ve C# API temeli. V11 arşivindeki MobileApp ve NutriAI.Api kaynakları birlikte aktarılmıştır.
 
-## Depodaki durum
+### Kurulum
 
-Bu klasörde şu anda Türkçe proje tanıtımı bulunmaktadır. Kaynak kodlar henüz aktarılmadı. Kapsam listesi geliştirme hedeflerini anlatır; tamamlanmış ve test edilmiş özellik listesi değildir.
+Komutları bu proje klasöründe çalıştırın. Node.js/npm gereklidir; web projelerinin Node.js alt sınırı package.json içindedir.
 
-## Sonraki adımlar
+```bash
+cd MobileApp
+npm install
+npx expo start
+# Ayrı terminal / Separate terminal:
+# cd NutriAI.Api
+# dotnet run
+```
 
-1. Mevcut mobil uygulama ve C# servis kaynaklarını aktarmak.
-2. İstek/yanıt tiplerini ve hata durumlarını doğrulamak.
-3. Plan ve alışveriş listesi akışını uçtan uca test etmek.
+### Doğrulama ve sınırlar / Validation and limitations
 
-## Geliştirme kaydı
+Mobil cihaz, bağımlılık kurulumu ve .NET derlemesi doğrulanmadı. PostgreSQL bağlantısı ve JWT anahtarı ortamda yapılandırılmalıdır. Paket sürümleri ve API bağlantısı cihazda kontrol edilmelidir. / Mobile execution, dependencies and .NET build are unverified. Configure PostgreSQL and JWT secrets before running. Nutrition and allergy outputs need user verification.
 
-- **16 Ekim 2026:** Proje klasörü oluşturuldu; Türkçe tanıtım, kapsam ve sonraki adımlar düzenlendi.
+## English
 
-[← Tüm projeler](../README.md)
+Mobile meal planning and shopping list application with a C# API foundation. The V11 snapshot includes both MobileApp and NutriAI.Api, with authentication and per-user state services.
+
+Run the commands above from this project folder. Web snapshots preserve their Sites-specific build integration; configure the hosting environment before deployment. A source upload does not imply production readiness.
+
+## Kaynak ve değişiklik kaydı / Source and change log
+
+- **17 Ekim / October 2026:** Erişilebilir en güncel kaynak paketi veya Sites kaynak deposu aktarıldı. / Imported the latest accessible package or Site source snapshot.
+- Gizli dosyalar, yerel bağımlılıklar ve runtime verileri dahil edilmedi. / Secrets, local dependencies and runtime data are excluded.
+- Mevcut kaynak notları varsa SOURCE_NOTES.md ve paket içindeki README belgelerinde korunur. / Original notes are retained where available.
+- Uygulama özellikleri bu aktarım için yeniden yazılmadı. / Application features were not rewritten for this transfer.
+
+[← Tüm projeler / All projects](../README.md)
+

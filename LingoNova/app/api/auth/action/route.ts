@@ -1,0 +1,13 @@
+import {env} from 'cloudflare:workers';
+import {authConfig} from '@/lib/auth';
+import {strongPassword,rateLimit,botCheck,jsonBody,audit,digest} from '@/lib/security';
+export async function POST(request:Request){try{
+ if(!await rateLimit(request,'auth',12))return Response.json({error:'Çok fazla deneme. 15 dakika sonra tekrar deneyin.'},{status:429,headers:{'Retry-After':'900'}});
+ const v=await jsonBody(request);const action=String(v.action||'');if(!['login','register','reset'].includes(action))return Response.json({error:'Geçersiz işlem.'},{status:400});
+ if(!await botCheck(request,v))return Response.json({error:'Bot kontrolünü tamamlayın.'},{status:400});const email=String(v.email||'').trim().toLowerCase();const password=String(v.password||'');if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||email.length>254)return Response.json({error:'Geçerli e-posta girin.'},{status:400});
+ if(action!=='reset'&&(!password||password.length>128))return Response.json({error:'Şifreyi kontrol edin.'},{status:400});if(action==='register'&&!strongPassword(password))return Response.json({error:'Şifre en az 12 karakter, büyük/küçük harf, sayı ve özel karakter içermeli.'},{status:400});
+ const hashed=await digest(email);const result=await env.DB!.prepare('INSERT INTO auth_limits(key,count,expires) VALUES(?,1,?) ON CONFLICT(key) DO UPDATE SET count=count+1 RETURNING count').bind('mail:'+Math.floor(Date.now()/900000)+':'+hashed,Date.now()+900000).first<{count:number}>();if((result?.count||0)>12)return Response.json({error:'Bu hesap için çok fazla deneme. Daha sonra tekrar deneyin.'},{status:429});
+ const path=action==='login'?'accounts:signInWithPassword':action==='register'?'accounts:signUp':'accounts:sendOobCode';const r=await fetch('https://identitytoolkit.googleapis.com/v1/'+path+'?key='+encodeURIComponent(authConfig().apiKey),{method:'POST',headers:{'Content-Type':'application/json','X-Firebase-Locale':'tr'},body:JSON.stringify(action==='reset'?{requestType:'PASSWORD_RESET',email}:{email,password,returnSecureToken:true}),signal:AbortSignal.timeout(15000)});const data=await r.json() as {localId?:string;error?:{message?:string}};
+ await audit({uid:data.localId||'anonymous',email:action==='register'&&r.ok?email:'hashed:'+hashed},'auth.'+action+(r.ok?'.success':'.failed'),data.localId||hashed);
+ if(action==='reset')return Response.json({ok:true});if(!r.ok)return Response.json({error:action==='register'?'Hesap oluşturulamadı. E-posta kullanımda olabilir veya şifre politikasına uymuyor.':'E-posta veya şifre hatalı.'},{status:400});return Response.json(data,{headers:{'Cache-Control':'no-store'}});
+ }catch{return Response.json({error:'Hesap işlemi tamamlanamadı. Yeniden deneyin.'},{status:503})}}

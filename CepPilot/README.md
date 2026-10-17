@@ -1,65 +1,38 @@
-# 💰 CepPilot
-### Cebindeki bütçe yardımcısı
+# 💰 CepPilot — v0.9
 
-Gelir ve giderlerini kaydetmek, harcamalarını görmek ve bir sonraki maaş gününe kadar günlük bütçeni takip etmek için geliştirilen mobil uygulama.
+**React Native · Expo · TypeScript**
 
-**Teknolojiler:** React Native · Expo SDK 54 · TypeScript · AsyncStorage  
-**Durum:** Mobil MVP kaynakları yüklü; fiziksel cihaz testi bekliyor.
+![Geçici Kaju varlığı — uygulama ekran görüntüsü değildir](assets/kaju_temporary.png)
 
-## Kaynakta bulunan özellikler
+## Türkçe
 
-- Ana sayfa, işlem geçmişi, analizler ve ayarlar olmak üzere dört sekme.
-- Gelir ve gider kaydı; yedi harcama kategorisi.
-- İşleme uzun basarak onaylı silme.
-- Son yedi günün harcama grafiği ve kategori dağılımı.
-- Bakiye, planlanan faturalar ve ayrılan birikime göre günlük harcama tahmini.
-- Başlangıç bakiyesi, maaş günü ve para birimi ayarları.
-- Cihaz üzerinde çevrimdışı kayıt; tutarlarda tam sayı kuruş hesabı.
+Gelir/gider kaydı ve günlük bütçe takibi için mobil uygulama. v0.9 paketi, kayıt ekranı ve klavye davranışı düzeltmelerini içerir. Onaylı maskot yerine geçici CP yazı logosu kullanılır.
 
-## Kurulum
+### Kurulum
 
-Node.js ve npm gereklidir. Depoyu indirdikten sonra terminali **package.json dosyasının bulunduğu CepPilot klasöründe** aç:
+Komutları bu proje klasöründe çalıştırın. Node.js/npm gereklidir; web projelerinin Node.js alt sınırı package.json içindedir.
 
-```powershell
-cd myprojes/CepPilot
+```bash
 npm install
-npx expo install --fix
 npx expo start
 ```
 
-Terminal zaten CepPilot klasöründeyse ilk komutu atla. Uyumlu Expo Go uygulaması veya emülatör/test derlemesiyle aç. Yerel ağ bağlantısı kurulamazsa `npx expo start --tunnel` denenebilir; ek bağımlılık gerektirebilir.
+### Doğrulama ve sınırlar / Validation and limitations
 
-## Dosyalar
+Cihaz ve derleme testi yapılmadı. Yerel saklama ve hesap yaklaşımı üretim güvenliği açısından incelenmelidir. / Device and build tests were not run; local storage and account handling require production review.
 
-| Dosya | Görevi |
-| --- | --- |
-| App.tsx | Ekranlar, bütçe hesapları ve kayıt yönetimi |
-| package.json | Bağımlılıklar ve çalıştırma komutları |
-| app.json | Expo ve mobil uygulama ayarları |
-| tsconfig.json | TypeScript yapılandırması |
-| .gitignore | Yerel bağımlılık ve gizli dosyaları dışlama |
+## English
 
-## Mevcut sınırlar
+Mobile budget tracker with income/expense records and daily spending estimates. This v0.9 snapshot includes onboarding and keyboard fixes; branding remains provisional.
 
-- Fiziksel Android/iOS cihaz testi ve bu aktarım sırasında derleme testi yapılmadı.
-- AsyncStorage şifreli değildir; hassas finansal ayrıntılar için uygun güvenli depolama henüz yoktur.
-- Para birimi seçimi yalnızca gösterimi değiştirir; mevcut tutarları dönüştürmez. Tek kayıt düzeninde tek para birimi kullanılmalıdır.
-- Başlangıç bakiyesi, uygulamaya kaydedilecek işlemlerden önceki bakiye olmalıdır; aynı hareket iki kez hesaba katılmamalıdır.
-- Fatura ve birikim tutarları elle girilir. Ödenmiş faturalar yeniden planlanan tutara eklenmemelidir.
-- İki ondalık basamak desteklenir; sıfır veya üç ondalıklı para birimleri uygulanmadı.
-- Aylık gruplama UTC kullanır; yerel saat dilimi iyileştirmesi bekliyor.
-- Banka bağlantısı, bulut yedekleme, giriş, abonelik, bildirim ve çeviri bulunmuyor.
-- Günlük bütçe bir tahmindir; girilmeyen borçları, faizleri veya düzensiz gelecek gelirlerini kapsamaz ve finansal tavsiye değildir.
+Run the commands above from this project folder. Web snapshots preserve their Sites-specific build integration; configure the hosting environment before deployment. A source upload does not imply production readiness.
 
-## Sonraki adımlar
+## Kaynak ve değişiklik kaydı / Source and change log
 
-1. Cihaz üzerinde kayıt, silme ve yeniden açma akışlarını doğrulamak.
-2. Türkçe arayüz ve yerel tarih hesaplarını geliştirmek.
-3. Güvenli depolama, erişilebilirlik ve mağaza gerekliliklerini tamamlamak.
+- **17 Ekim / October 2026:** Erişilebilir en güncel kaynak paketi veya Sites kaynak deposu aktarıldı. / Imported the latest accessible package or Site source snapshot.
+- Gizli dosyalar, yerel bağımlılıklar ve runtime verileri dahil edilmedi. / Secrets, local dependencies and runtime data are excluded.
+- Mevcut kaynak notları varsa SOURCE_NOTES.md ve paket içindeki README belgelerinde korunur. / Original notes are retained where available.
+- Uygulama özellikleri bu aktarım için yeniden yazılmadı. / Application features were not rewritten for this transfer.
 
-## Geliştirme kaydı
+[← Tüm projeler / All projects](../README.md)
 
-- **16 Ekim 2026:** Mobil v0.2 arşivindeki kaynaklar GitHub'a aktarıldı; Türkçe kurulum ve proje tanıtımı eklendi.
-- Arşiv ve app.json 0.2.0, package.json ise 0.1.0 sürümünü taşır. Aktarım sırasında uygulama kodu değiştirilmedi.
-
-[← Tüm projeler](../README.md)

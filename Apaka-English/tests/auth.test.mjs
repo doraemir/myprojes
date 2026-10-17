@@ -1,0 +1,30 @@
+import {DatabaseSync} from 'node:sqlite';
+import {readdirSync,readFileSync} from 'node:fs';
+import assert from 'node:assert/strict';
+const esbuildPath=readdirSync('node_modules/.pnpm').find(n=>n.startsWith('esbuild@'));const {build}=await import('../node_modules/.pnpm/'+esbuildPath+'/node_modules/esbuild/lib/main.js');
+const sql=new DatabaseSync(':memory:');for(const f of readdirSync('drizzle').filter(f=>f.endsWith('.sql')).sort())sql.exec(readFileSync('drizzle/'+f,'utf8'));
+class P{constructor(q){this.q=q;this.a=[]}bind(...a){this.a=a;return this}async run(){return sql.prepare(this.q).run(...this.a)}async first(){return sql.prepare(this.q).get(...this.a)||null}async all(){return {results:sql.prepare(this.q).all(...this.a)}}}
+globalThis.authTestEnv={DB:{prepare:q=>new P(q),batch:async ss=>{sql.exec('BEGIN');try{const rs=[];for(const s of ss)rs.push(await s.run());sql.exec('COMMIT');return rs}catch(e){sql.exec('ROLLBACK');throw e}}}};
+await build({entryPoints:['app/api/[...path]/route.ts'],outfile:'.sites-runtime/auth-test-bundle.mjs',bundle:true,format:'esm',platform:'node',plugins:[{name:'mock-d1',setup(b){b.onResolve({filter:/^cloudflare:workers$/},()=>({path:'env',namespace:'mock'}));b.onLoad({filter:/.*/,namespace:'mock'},()=>({contents:'export const env=globalThis.authTestEnv;'}));}}]});
+const route=await import('../.sites-runtime/auth-test-bundle.mjs');
+const secret='test-owner-setup-secret';globalThis.authTestEnv.APAKA_OWNER_SETUP_HASH=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(secret)))).map(x=>x.toString(16).padStart(2,'0')).join('');
+sql.prepare('INSERT INTO users VALUES(?,?,?,?,?,?,?)').run('existing-owner','owner@example.com','Emircan Dora','admin','active','A1',new Date().toISOString());
+let checks=0;
+async function call(path,body,cookie='',status=200,extra={}){const req=new Request('https://apaka.test/api/'+path,{method:body===undefined?'GET':'POST',headers:{...(body===undefined?{}:{'Content-Type':'application/json',Origin:'https://apaka.test'}),...(cookie?{Cookie:cookie}:{}),...extra},body:body===undefined?undefined:JSON.stringify(body)});const r=await route.GET(req),j=await r.json();assert.equal(r.status,status,path+': '+JSON.stringify(j));checks++;return {j,cookie:r.headers.get('set-cookie')?.split(';')[0]||'',r};}
+await call('me',undefined,'',401,{'oai-authenticated-user-id':'existing-owner','oai-authenticated-user-email':'owner@example.com'});
+await call('auth/register',{name:'Attacker',email:'owner@example.com',password:'ValidPassword123',confirm:'ValidPassword123'},'',400);
+await call('auth/setup',{token:'wrong',password:'ValidPassword123',confirm:'ValidPassword123'},'',403);
+const admin=await call('auth/setup',{token:secret,password:'OwnerPassword123',confirm:'OwnerPassword123'});assert(admin.cookie.startsWith('apaka_session='));assert(admin.r.headers.get('set-cookie').includes('HttpOnly'));assert(admin.r.headers.get('set-cookie').includes('Secure'));assert.equal(admin.j.user.id,'existing-owner');assert.equal(admin.j.user.role,'admin');
+await call('auth/setup',{token:secret,password:'OverwritePassword123',confirm:'OverwritePassword123'},'',409);
+await call('auth/login',{email:'owner@example.com',password:'wrong'},'',401);
+const logged=await call('auth/login',{email:'owner@example.com',password:'OwnerPassword123'});const state=await call('state',undefined,logged.cookie);assert(state.j.admin);
+await call('auth/register',{name:'Student',email:'new@example.test',password:'short',confirm:'short'},'',400);
+const student=await call('auth/register',{name:'Student',email:'new@example.test',role:'admin',password:'StudentPassword123',confirm:'StudentPassword123'});assert.equal(student.j.user.role,'student');assert(!sql.prepare('SELECT hash FROM credentials WHERE user_id=?').get(student.j.user.id).hash.includes('Password'));
+const studentState=await call('state',undefined,student.cookie);assert.equal(studentState.j.admin,false);await call('admin/settings',{schoolName:'Forbidden'},student.cookie,403);
+await call('auth/invite',{user_id:'existing-owner'},student.cookie,403);
+await call('auth/change-password',{current:'WrongPassword123',password:'NewPassword123',confirm:'NewPassword123'},student.cookie,403);
+const changed=await call('auth/change-password',{current:'StudentPassword123',password:'NewPassword123',confirm:'NewPassword123'},student.cookie);await call('me',undefined,student.cookie,401);await call('me',undefined,changed.cookie);
+const invitation=await call('auth/invite',{user_id:student.j.user.id},logged.cookie);const token=invitation.j.url.split('#')[1];const reset=await call('auth/setup',{token,password:'ResetPassword123',confirm:'ResetPassword123'});assert.equal(reset.j.user.id,student.j.user.id);await call('me',undefined,changed.cookie,401);await call('auth/setup',{token,password:'ResetPassword123',confirm:'ResetPassword123'},'',403);
+await call('auth/logout',{},reset.cookie);await call('me',undefined,reset.cookie,401);
+await call('auth/login',{email:'new@example.test',password:'ResetPassword123'},'',403,{Origin:'https://evil.test'});
+console.log(`PASS: ${checks} real password/session checks — no platform-header login, reserved admin account, one-time owner setup, hashed passwords, signup role protection, secure cookies, session login/logout, password changes, reset links, session revocation and CSRF.`);

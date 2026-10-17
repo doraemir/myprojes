@@ -1,1 +1,17 @@
-{"expo":{"name":"CepPilot","slug":"ceppilot","scheme":"ceppilot","version":"0.2.0","orientation":"portrait","userInterfaceStyle":"light","ios":{"supportsTablet":true,"bundleIdentifier":"com.ceppilot.mobile"},"android":{"package":"com.ceppilot.mobile"}}}
+{
+  "expo": {
+    "name": "CepPilot",
+    "slug": "ceppilot",
+    "scheme": "ceppilot",
+    "version": "0.9.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ceppilot.mobile"
+    },
+    "android": {
+      "package": "com.ceppilot.mobile"
+    }
+  }
+}

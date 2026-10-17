@@ -1,0 +1,15 @@
+using System.Text;using System.Threading.RateLimiting;using Microsoft.AspNetCore.Authentication.JwtBearer;using Microsoft.EntityFrameworkCore;using Microsoft.IdentityModel.Tokens;using NutriAI.Api.Data;using NutriAI.Api.Services;
+var builder=WebApplication.CreateBuilder(args);
+if(builder.Environment.IsDevelopment())builder.WebHost.UseUrls("http://0.0.0.0:5276");
+builder.Services.AddControllers();
+var cs=builder.Configuration.GetConnectionString("NutriAiDb")??throw new InvalidOperationException("ConnectionStrings:NutriAiDb missing");
+builder.Services.AddDbContext<NutriDbContext>(o=>o.UseNpgsql(cs));builder.Services.AddScoped<AuthService>();
+var jwtKey=builder.Configuration["Jwt:Key"]??throw new InvalidOperationException("Jwt:Key secret is missing (minimum 32 chars)");
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o=>o.TokenValidationParameters=new TokenValidationParameters{ValidateIssuer=false,ValidateAudience=false,ValidateLifetime=true,ValidateIssuerSigningKey=true,IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),ClockSkew=TimeSpan.FromSeconds(30)});builder.Services.AddAuthorization();
+var origins=builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()??["http://localhost:8081","http://localhost:19006"];
+builder.Services.AddCors(o=>o.AddPolicy("NutriAI",p=>p.WithOrigins(origins).AllowAnyHeader().AllowAnyMethod()));
+builder.Services.AddRateLimiter(o=>{o.RejectionStatusCode=429;o.GlobalLimiter=PartitionedRateLimiter.Create<HttpContext,string>(ctx=>RateLimitPartition.GetFixedWindowLimiter(ctx.Connection.RemoteIpAddress?.ToString()??"unknown",_=>new FixedWindowRateLimiterOptions{PermitLimit=120,Window=TimeSpan.FromMinutes(1),QueueLimit=0}));});
+builder.Services.AddHealthChecks();
+var app=builder.Build();
+app.Use(async(ctx,next)=>{try{await next();}catch(Exception ex){app.Logger.LogError(ex,"Unhandled API error");if(!ctx.Response.HasStarted){ctx.Response.StatusCode=500;await ctx.Response.WriteAsJsonAsync(new{message="Beklenmeyen bir sunucu hatası oluştu."});}}});
+if(!app.Environment.IsDevelopment())app.UseHttpsRedirection();app.UseRateLimiter();app.UseCors("NutriAI");app.UseAuthentication();app.UseAuthorization();app.MapControllers();app.MapHealthChecks("/health");app.MapGet("/",()=>Results.Ok(new{success=true,message="NutriAI API çalışıyor",database="PostgreSQL"}));app.Run();

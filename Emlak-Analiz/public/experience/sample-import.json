@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Sarıgazi · Aydınlık 2+1 daire",
+    "city": "İstanbul",
+    "district": "Sancaktepe",
+    "neighborhood": "Sarıgazi",
+    "type": "sale",
+    "rooms": "2+1",
+    "area": 82,
+    "price": 3660500,
+    "age": 4,
+    "floor": 2,
+    "dues": 800,
+    "elevator": "yes",
+    "parking": "no",
+    "url": "",
+    "source": "Örnek veri"
+  }
+]

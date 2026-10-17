@@ -1,0 +1,2 @@
+CREATE UNIQUE INDEX `live_peer_user_unique` ON `live_peers` (`room_id`,`uid`);--> statement-breakpoint
+CREATE UNIQUE INDEX `live_room_active_unique` ON `live_rooms` (`lesson_id`) WHERE "live_rooms"."ended_at" IS NULL;

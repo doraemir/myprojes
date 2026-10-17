@@ -1,0 +1,1 @@
+ALTER TABLE `lessons` ADD `reminder_email_id` text;

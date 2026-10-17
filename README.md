@@ -1,40 +1,30 @@
-<div align="center">
+# Emircan Dora | Proje Portföyü · Project Portfolio
 
-# Emircan Dora
-### Mobil uygulamalar · Web platformları · Oyun geliştirme
-
-Günlük ihtiyaçları kullanışlı dijital ürünlere dönüştürmek için geliştirdiğim projeler.
+Mobil uygulamalar, eğitim platformları ve günlük ihtiyaçlara yönelik araçlar.  
+Mobile applications, learning platforms and practical everyday tools.
 
 [GitHub](https://github.com/doraemir) · [LinkedIn](https://www.linkedin.com/in/emircandora/)
 
-</div>
+## Projeler / Projects
 
----
+| Proje | İçerik / Contents | Durum / Status |
+| --- | --- | --- |
+| [💰 CepPilot](CepPilot/) | Mobil bütçe takibi / Mobile budgeting | v0.9 kaynakları / sources |
+| [🎓 LingoNova](LingoNova/) | Ders ve eğitim yönetimi / Learning management | Web kaynakları / Web sources |
+| [Apaka English](Apaka-English/) | Online dil okulu / Online language school | Web kaynakları ve medya / Sources and media |
+| [🏠 EvPusula](Emlak-Analiz/) | Emlak ve çevre raporu / Property reporting | Web kaynakları; 19 test geçti / 19 tests passed |
+| [🥗 NutriAI](NutriAI/) | Beslenme planlama / Meal planning | V11 mobil + C# API / Mobile + C# API |
+| [🚗 Araba Park Oyunu](Araba-Park-Oyunu/) | Park simülasyonu / Parking simulation | Kaynak bulunamadı; açıklama mevcut / Source unavailable; overview only |
 
-## Projelerim
+## Nasıl inceleyebilirsin? / Explore
 
-| Proje | Amaç | Depodaki durum |
-| :--- | :--- | :--- |
-| [💰 CepPilot](./CepPilot/) | Gelir, gider ve günlük bütçe takibi | Mobil MVP kaynakları yüklü |
-| [🎓 LingoNova](./LingoNova/) | Ders planlama ve canlı eğitim yönetimi | Proje tanıtımı; kaynak aktarımı bekliyor |
-| [🦙 Apaka English](./Apaka-English/) | Maskotla İngilizce öğrenme içerikleri | İçerik projesi tanıtımı |
-| [🏠 Emlak Analiz](./Emlak-Analiz/) | İlan ve bölge karşılaştırma raporları | Proje tanıtımı; kaynak aktarımı bekliyor |
-| [🥗 NutriAI](./NutriAI/) | Haftalık beslenme ve alışveriş planlama | Proje tanıtımı; kaynak aktarımı bekliyor |
-| [🚗 Araba Park Oyunu](./Araba-Park-Oyunu/) | Sürüş ve park deneyimi | Proje tanıtımı; kaynak aktarımı bekliyor |
+Her proje kendi klasöründe kurulum, kapsam ve doğrulama bilgileriyle yer alır. Çalışma ortamları ve bağımlılıklar projeye göre değişir. Kaynak yüklenmesi, tüm özelliklerin üretimde doğrulandığı anlamına gelmez.
 
-## Odak alanlarım
+Each folder contains setup instructions, scope and validation notes. Runtime requirements differ by project. Uploaded source code does not imply that every feature is production-tested.
 
-- **Mobil:** React Native, Expo ve TypeScript ile uygulama geliştirme.
-- **Uygulama entegrasyonu:** C# API servisleriyle veri alışverişi.
-- **Ürün deneyimi:** Anlaşılır akışlar, sade arayüzler ve görsel geri bildirim.
-- **Yapay zekâ destekli üretim:** Geliştirme ve eğitim içeriği hazırlama süreçleri.
+## Güncellemeler / Updates
 
-## Depoyu keşfet
+17 Ekim 2026: Beş projenin erişilebilir kaynakları aktarıldı; Türkçe ve İngilizce açıklamalar eklendi. Gece 00.00 Türkiye saati için erişilebilir yeni kaynakları kontrol eden görev kuruldu. Bilgisayardaki paylaşılmamış değişikliklere erişilmez.
 
-Her proje kendi klasöründe yer alır. Projenin amacı, kapsamı, mevcut durumu ve sonraki adımları ilgili README dosyasında açıklanır.
+October 17, 2026: Imported available sources for five projects and added Turkish/English documentation. A nightly midnight Türkiye-time task checks accessible new sources. Unshared local computer changes are not accessible.
 
-**Başlangıç:** Kaynakları bulunan [CepPilot kurulum rehberini](./CepPilot/README.md) inceleyebilirsin.
-
-## Geliştirme durumu
-
-Projeler geliştirme aşamasındadır. Tanıtım sayfalarındaki hedefler, tamamlanmış özellik listesi olarak değerlendirilmemelidir. CepPilot fiziksel cihazda henüz doğrulanmamıştır. Otomatik GitHub senkronizasyonu henüz kurulmamıştır.
